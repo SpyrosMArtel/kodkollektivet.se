@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% include 'menu.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,24 +14,23 @@
     <meta property="og:url" content="http://kodkollektivet.se" />
     <meta property="og:image" content="{% static 'img/logo.png' %}" />
 
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css">
     <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">  
     <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
-
   </head>
   <body>
-    
+      <div id="wrapper">
     <header>
-      <div align="center">
+        {% include 'menu.html' %}
+    </header>
+    <main>
         {% if header_text %}
-        <h1>{{ header_text }}</h1>
+            <h1>{{ header_text }}</h1>
         {% else %}
-        <h1>Kodkollektivet</h1>
+            <h1>Kodkollektivet</h1>
         <!-- <a class="btn-open" href="#"><img src="{% static 'img/logo.png' %}" /></a> -->
         {% endif %}
-      </div>
-    </header>
-
-    <main>
       {% block content %}
       <article>
           <h2 align="center">Vad är Kodkollektivet?</h2>
@@ -55,7 +53,6 @@
             Dagens studenter är dem som kommer att driva fram nya ideer och tanker i dagens företag. Genom Kodkollektivet finns möjligheten att på ett prestigelöst och socialt sätt träffa studenter. Kodkollektivet ser gärna att ni kommer med ideer på events, föreläsningar eller studiebesök! Vill ni vara med och sponsra Kodkollektivet och få din logo på hemsidan?
           </p>
       </article>
-
       <aside>
         <section>
           {% if upcomming_events %}
@@ -71,6 +68,6 @@
       </aside>
       {% endblock %}
     </main>
-
+      </div>
   </body>
 </html>

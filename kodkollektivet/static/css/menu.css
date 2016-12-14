@@ -1,9 +1,30 @@
-nav ul{
-    list-style-type: none;
+.pure-menu.pure-menu-fixed {
+    position: fixed;
+    height:55px
 }
-
-nav ul li{
-    display: inline;    
+.pure-menu .pure-menu-item {
+  height:100%;
+  line-height: 50px;
+  width:80px
 }
-
-  
+.pure-menu.pure-menu-bluebg {
+    background: #002147;
+}
+.pure-menu.pure-menu-bluebg .pure-menu-heading:hover {
+    color: #efefef;
+}
+.pure-menu .pure-menu-list {
+   height:100%
+}
+.pure-menu.pure-menu-bluebg a {
+  line-height: 50px;
+  display:inline-block;
+  color:#F8F8FF;
+  height:100%;
+  text-decoration:none;
+  margin: 0;
+  padding: 0;
+}
+.pure-menu.pure-menu-bluebg .pure-menu-selected {
+    box-shadow: inset 0px -4px 0px 0px #E95420;
+}

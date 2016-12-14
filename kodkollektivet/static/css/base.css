@@ -1,0 +1,21 @@
+html {
+  height:100%;
+  width:100%
+}
+body {
+  background-color:#F8F8FF;
+  margin:0;
+  padding:0;
+  width:100%;
+  height:auto
+}
+#wrapper {
+  display:block;
+  margin:0 auto;
+  text-align:center;
+  position:relative;
+  width:820px
+}
+main {
+margin: 68px 0;
+}

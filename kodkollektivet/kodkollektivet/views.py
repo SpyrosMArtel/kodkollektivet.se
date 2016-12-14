@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, time
 
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, ListView, DetailView
 from django.utils import timezone
 
@@ -13,6 +14,7 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         m = models.Event.objects.filter(date__gte=datetime.now())
         context['upcomming_events'] = m
+        context['header_text'] = 'Kodkollektivet'
         return context
 
 
@@ -21,9 +23,8 @@ class BoardTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(BoardTemplateView, self).get_context_data(**kwargs)
-        context['header_text'] = 'Styrelsen'
+        context['header_text'] = _('Board')
         return context
-    
     
 
 class EventsListView(ListView):
@@ -32,7 +33,7 @@ class EventsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(EventsListView, self).get_context_data(**kwargs)
-        context['header_text'] = 'Events'
+        context['header_text'] = _('Events')
         return context
 
 
@@ -48,7 +49,7 @@ class ProjectsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectsListView, self).get_context_data(**kwargs)
-        context['header_text'] = 'Projects'
+        context['header_text'] = _('Projects')
         return context
 
 

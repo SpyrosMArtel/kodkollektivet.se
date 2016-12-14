@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -73,6 +74,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -119,13 +121,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Stockholm'
 
 USE_I18N = True
 
 USE_L10N = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('sv', _('Swedish'))
+)
+
+
 
 USE_TZ = True
 
@@ -178,7 +191,39 @@ LOGGING = {
         'django': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '../logs/django.log',
+            'filename': '../logs/all.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5MB
+            'backupCount': 5,
+            'formatter': 'standard'
+        },
+        'django-requests': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '../logs/django-requests.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5MB
+            'backupCount': 5,
+            'formatter': 'standard'
+        },
+        'django-template': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '../logs/django-template.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5MB
+            'backupCount': 5,
+            'formatter': 'standard'
+        },
+        'django-server': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '../logs/django-server.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5MB
+            'backupCount': 5,
+            'formatter': 'standard'
+        },
+        'django-security': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '../logs/django-security.log',
             'maxBytes': 1024 * 1024 * 5,  # 5MB
             'backupCount': 5,
             'formatter': 'standard'
@@ -209,12 +254,22 @@ LOGGING = {
             'propagate': True
         },
         'django.requests': {
-            'handlers': ['django'],
+            'handlers': ['django-requests'],
             'level': 'DEBUG',
             'propagate': True
         },
         'django.template': {
-            'handlers': ['django'],
+            'handlers': ['django-template'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'django.server': {
+            'handlers': ['django-server'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'django.security': {
+            'handlers': ['django-security'],
             'level': 'DEBUG',
             'propagate': True
         }

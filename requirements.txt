@@ -1,6 +1,8 @@
 django
 django-registration
 djangorestframework
+django-form-utils
+argon2-cffi
 requests
 django-markdown-deux
 Pillow

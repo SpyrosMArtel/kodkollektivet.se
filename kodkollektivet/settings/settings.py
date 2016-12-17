@@ -42,18 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'userprofile',
     'kodkollektivet',
 
     'rest_framework',
     'markdown_deux',
-    
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',    
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,6 +80,11 @@ TEMPLATES = [
         },
     },
 ]
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+]
+
 
 WSGI_APPLICATION = 'settings.wsgi.application'
 
@@ -115,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # AUTH_PROFILE_MODUL
-#AUTH_USER_MODEL = 'userprofile.Member'
+AUTH_USER_MODEL = 'kodkollektivet.BaseUser'
 
 
 # Internationalization

@@ -1,11 +1,57 @@
 # -*- coding: utf-8 -*-
 
+import time
 from datetime import datetime, timedelta
 
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from .managers.UserManager import UserManager
+from django.utils.translation import ugettext_lazy as _
+from django.core.mail import send_mail
 
+class BaseUser(AbstractBaseUser, PermissionsMixin):
+    first_name = models.CharField(max_length=254, blank=True)
+    last_name = models.CharField(max_length=254, blank=True)
+
+    email = models.EmailField(_('email address'), max_length=254, unique=True)
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+
+    is_active = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    class Meta:
+        verbose_name = _('baseuser')
+        verbose_name_plural = _('baseusers')
+
+    def get_full_name(self):
+        '''
+        Returns the first_name plus the last_name, with a space in between.
+        '''
+        full_name = '%s %s' % (self.first_name, self.first_name)
+        return full_name.strip()
+
+    def get_short_name(self):
+        '''
+        Returns the short name for the user.
+        '''
+        return self.first_name
+
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        '''
+        Sends an email to this User.
+        '''
+        send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def set_last_login(self, last_login):
+        self.last_login = last_login
 
 class PostQuerySet(models.QuerySet):
     def published(self):
@@ -90,38 +136,23 @@ class Role(models.Model):
     def __str__(self):
         return self.slug
 
+class Contributor(BaseUser):
+    slug = models.CharField(max_length=254, blank=True, null=True)
+    website = models.CharField(max_length=254, blank=True, null=True)
+    linkedin = models.CharField(max_length=254, blank=True, null=True)
 
-class Contributor(models.Model):
-    name = models.CharField(max_length=254, blank=True)
-    slug = models.CharField(max_length=254, blank=True)
-    email = models.EmailField(max_length=254, blank=True)
-    website = models.CharField(max_length=254, blank=True)
-    linkedin = models.CharField(max_length=254, blank=True)
-    about = models.TextField(blank=True, help_text='Markdown syntax')
-
+    about = models.TextField(blank=True, help_text='Markdown syntax', null=True)
+    has_paid = models.BooleanField(default=False)
+    date_paid = models.DateTimeField(_('date paid'), null=True)
     # Github specific
-    gh_login = models.CharField(max_length=254)
-    gh_url = models.CharField(max_length=254)
-    gh_id = models.IntegerField()
-    gh_html = models.CharField(max_length=254, blank=True)
-    gh_avatar = models.CharField(max_length=254, blank=True)
+    gh_login = models.CharField(max_length=254, null=True)
+    gh_url = models.CharField(max_length=254, null=True)
+    gh_id = models.IntegerField(null=True)
+    gh_html = models.CharField(max_length=254, blank=True, null=True)
+    gh_avatar = models.CharField(max_length=254, blank=True, null=True)
 
     class Meta:
         ordering = ['slug']
-
-    def save(self, *args, **kwargs):
-        """
-        Set name and slug
-        """
-        if not self.name:
-            self.name = self.gh_login
-            self.slug = slugify(self.gh_login)
-
-        super(Contributor, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.slug
-
 
 class Language(models.Model):
     name = models.CharField(max_length=254)

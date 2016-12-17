@@ -1,7 +1,9 @@
 from datetime import datetime, timedelta, time
-
+from django.contrib.auth.forms import PasswordResetForm
+from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from .forms import ContributorForm
 from django.utils import timezone
 
 from . import models
@@ -73,6 +75,33 @@ class ProjectsDetailView(DetailView):
         context['frameworks'] = frameworks
         return context
 
+class ContributorRegisterView(CreateView):
+    form_class = ContributorForm
+    model = models.Contributor
+    template_name = 'registration/registration_form.html'
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.set_password(form.cleaned_data['password'])
+        obj.save()
+
+        # This form only requires the "email" field, so will validate.
+        reset_form = PasswordResetForm(self.request.POST)
+        reset_form.is_valid()  # Must trigger validation
+        # Copied from django/contrib/auth/views.py : password_reset
+        opts = {
+            'use_https': self.request.is_secure(),
+            'email_template_name': 'registration/verification.html',
+            'subject_template_name': 'registration/verification_subject.txt',
+            'request': self.request,
+            # 'html_email_template_name': provide an HTML content template if you desire.
+        }
+        # This form sends the email on save()
+        reset_form.save(**opts)
+
+        return redirect('kodkollektivet:register-done')
+
+        # return redirect('accounts:register-done')
 
 class ContributorDetailView(DetailView):
     """Contributor Detail View"""

@@ -4,7 +4,39 @@
 {% block content %}
 <form method="post" action=".">
   {% csrf_token %}
-  {{ form.as_p }}
+  {% if form.errors %}
+    <p>{{ form.non_field_errors.as_text }}</p>
+  {% endif %}
+  <fieldset>
+    <legend>Personal Information</legend>
+    {{ form.first_name.label_tag }}
+    {{ form.first_name }}
+    {{form.last_name.label_tag}}
+    {{ form.last_name }}
+    {{form.email.label_tag}}
+    {{ form.email }}
+    {{form.website.label_tag}}
+    {{ form.website }}
+    {{form.linkedin.label_tag}}
+    {{ form.linkedin }}
+    {{form.about.label_tag}}
+    {{ form.about }}
+    {{form.password.label_tag}}
+    {{ form.password }}
+    {{form.password_verify.label_tag}}
+    {{ form.password_verify }}
+  </fieldset>
+  <fieldset>
+    <legend>Github Information</legend>
+    {{form.gh_login.label_tag}}
+    {{ form.gh_login }}
+    {{form.gh_url.label_tag}}
+    {{ form.gh_url }}
+    {{form.gh_id.label_tag}}
+    {{ form.gh_id }}
+    {{form.gh_html.label_tag}}
+    {{ form.gh_html }}
+  </fieldset>
 
   <input type="submit" value="{% trans 'Submit' %}" />
 </form>

@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from . import models
 
+class BaseUserAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email','date_joined', 'is_staff', 'is_superuser')
 
 class EventAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
@@ -14,7 +16,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class ContributorAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('first_name', 'last_name', 'email','date_joined', 'is_staff', 'is_superuser')
     exclude = ('slug', 'gh_login', 'gh_url', 'gh_id', 'gh_html', 'gh_avatar')
 
 
@@ -50,7 +52,8 @@ class ProRolAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Event, EventAdmin)
-    
+
+admin.site.register(models.BaseUser, BaseUserAdmin)
 admin.site.register(models.Project, ProjectAdmin)
 admin.site.register(models.Language, LanguageAdmin)
 admin.site.register(models.Contributor, ContributorAdmin)

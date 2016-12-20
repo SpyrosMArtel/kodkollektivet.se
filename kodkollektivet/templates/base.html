@@ -27,31 +27,43 @@
         {% include 'menu.html' %}
     </header>
     <main>
-        {% if header_text %}
-            <h1>{{ header_text }}</h1>
-        {% else %}
-            <h1>Kodkollektivet</h1>
+        <!--{% if header_text %}-->
+            <!--<h1>{{ header_text }}</h1>-->
+        <!--{% else %}-->
+            <!--<h1>Kodkollektivet</h1>-->
         <!-- <a class="btn-open" href="#"><img src="{% static 'img/logo.png' %}" /></a> -->
-        {% endif %}
+        <!--{% endif %}-->
       {% block content %}
       <article>
-        <h2 align="center">{% trans "Vad är Kodkollektivet" %}? </h2>
-        <p>
-          {% blocktrans %}
-          Kodkollektivet består av en grupp studenter med ett brinnande intresse, främst inom programmering, nätverk och andra IT-relaterade ämnen. Vi startade under sommaren 2015 med ett hav av idéer som vi sedan dess har provat på, finslipat men framför allt lärt oss en hel del av gällande både samarbete, planering och fokus. Med detta i bagaget startar Kodkollektivet nu som studentförening och skiftar fokus en aning från projektarbeten och kodträffar till en mer social platform inriktad på studenter (med ingen till full kompetens inom sitt område) likaväl som företag med intresse av att komma i tidig kontakt med framtida arbetstagare. Detta gör vi med hjälp av en mötesplats där studenter får komma i kontakt med båda varandra och näringsliv genom diverse aktiviteter såsom tema-kvällar, hackathons, workshops, studiebesök och kortare gästföreläsningar från företag i regionen.
-
-          {% endblocktrans %}
-        </p>
-
-        <h2 align="center">{% trans "Student, har du vad som krävs" %}?</h2>
-        <p>
-          {% blocktrans %}Absolut! För att ta del av Kodkollektivet krävs inga som helst tidigare erfarenheter eller särskilda talanger. Vi välkomnar alla som vill lära sig mer, förbättra sitt CV, eller bara träffa nya vänner med liknande intressen! Kodkollektivet ställer inga krav på dig som student, utan ger dig bara möjligheten. Du bestämmer själv hur mycket du vill delta och hur mycket tid du vill lägga ner på de aktiviteter och träffar vi erbjuder.{% endblocktrans %}
-        </p>
-
-        <h2 align="center">{% trans "Företagare, kom och träffa framtiden" %}!</h2>
-        <p>
-          {% blocktrans %}Dagens studenter är dem som kommer att driva fram nya ideer och tanker i dagens företag. Genom Kodkollektivet finns möjligheten att på ett prestigelöst och socialt sätt träffa studenter. Kodkollektivet ser gärna att ni kommer med ideer på events, föreläsningar eller studiebesök! Vill ni vara med och sponsra Kodkollektivet och få din logo på hemsidan?{% endblocktrans %}
-        </p>
+        <header class="home-heading">
+          <h1 class="home-header">Kodkollektivet</h1>
+          <div class="home-header-container">
+            <h1 class="home-moto">Talent + Top Employers</h1>
+            <h4 class="home-moto">Start your future with us!</h4>
+            <a class="button-success pure-button" href="{% url "kodkollektivet:registerview" %}">{% trans "Become member!" %}</a>
+          </div>
+          <img class="pure-img" src="{% static 'img/people-coffee-notes-tea.jpg' %}" alt="kodkollektivet"/>
+        </header>
+        <section>
+          <div class="pure-g">
+            <div class="pure-u-1-2">
+              <h2 align="center">{% trans "Vad är Kodkollektivet" %}? </h2>
+              <p class="justify">
+                {% blocktrans %}
+                Kodkollektivet består av en grupp studenter med ett brinnande intresse, främst inom programmering, nätverk och andra IT-relaterade ämnen. Vi startade under sommaren 2015 med ett hav av idéer som vi sedan dess har provat på, finslipat men framför allt lärt oss en hel del av gällande både samarbete, planering och fokus. Med detta i bagaget startar Kodkollektivet nu som studentförening och skiftar fokus en aning från projektarbeten och kodträffar till en mer social platform inriktad på studenter (med ingen till full kompetens inom sitt område) likaväl som företag med intresse av att komma i tidig kontakt med framtida arbetstagare. Detta gör vi med hjälp av en mötesplats där studenter får komma i kontakt med båda varandra och näringsliv genom diverse aktiviteter såsom tema-kvällar, hackathons, workshops, studiebesök och kortare gästföreläsningar från företag i regionen.
+                {% endblocktrans %}
+              </p>
+            </div>
+            <div class="pure-u-1-2">
+              <h2 align="center">{% trans "Student, har du vad som krävs" %}?</h2>
+                <p class="justify">{% blocktrans %}Absolut! För att ta del av Kodkollektivet krävs inga som helst tidigare erfarenheter eller särskilda talanger. Vi välkomnar alla som vill lära sig mer, förbättra sitt CV, eller bara träffa nya vänner med liknande intressen! Kodkollektivet ställer inga krav på dig som student, utan ger dig bara möjligheten. Du bestämmer själv hur mycket du vill delta och hur mycket tid du vill lägga ner på de aktiviteter och träffar vi erbjuder.{% endblocktrans %}</p>
+            </div>
+            <div class="pure-u-1-1">
+                <h2 align="center">{% trans "Företagare, kom och träffa framtiden" %}!</h2>
+                <p class="justify">{% blocktrans %}Dagens studenter är dem som kommer att driva fram nya ideer och tanker i dagens företag. Genom Kodkollektivet finns möjligheten att på ett prestigelöst och socialt sätt träffa studenter. Kodkollektivet ser gärna att ni kommer med ideer på events, föreläsningar eller studiebesök! Vill ni vara med och sponsra Kodkollektivet och få din logo på hemsidan?{% endblocktrans %}</p>
+            </div>
+          </div>
+          </section>
       </article>
       <aside>
         <section>

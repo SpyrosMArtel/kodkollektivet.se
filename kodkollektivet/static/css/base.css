@@ -14,8 +14,48 @@ body {
   margin:0 auto;
   text-align:center;
   position:relative;
-  width:820px
+  width:1024px
 }
 main {
-margin: 68px 0;
+  margin: 55px 0;
+}
+.home-header {
+    background-color: #002147;
+    color: white;
+    margin: 0;
+    padding: 8px;
+    position: absolute;
+    right: 25px;
+    top: 12px;
+}
+.home-header-container {
+    background-color: rgba(0, 33, 71, 0.55);
+    border-radius: 10px;
+    bottom: 15%;
+    color: #f8f8ff;
+    left: 5%;
+    padding: 12px;
+    position: absolute;
+}
+.home-heading{
+  position:relative
+}
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-success {
+  background: #7E9307; /* this is a green */
+}
+.home-moto {
+    margin: 10px 0;
+    padding: 0;
+}
+.justify {
+  text-align:justify;
+  padding: 15px;
 }

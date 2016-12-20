@@ -7,24 +7,27 @@
   line-height: 50px;
   width:80px
 }
-.pure-menu.pure-menu-bluebg {
-    background: #002147;
+.pure-menu.pure-menu-white {
+    background: #F8F8FF;
 }
-.pure-menu.pure-menu-bluebg .pure-menu-heading:hover {
-    color: #efefef;
+.pure-menu.pure-menu-white .pure-menu-heading:hover {
+    color: #7E9307;
 }
 .pure-menu .pure-menu-list {
    height:100%
 }
-.pure-menu.pure-menu-bluebg a {
+.pure-menu.pure-menu-white a {
   line-height: 50px;
   display:inline-block;
-  color:#F8F8FF;
+  color:#002147;
   height:100%;
   text-decoration:none;
   margin: 0;
   padding: 0;
 }
-.pure-menu.pure-menu-bluebg .pure-menu-selected {
-    box-shadow: inset 0px -4px 0px 0px #E95420;
+.pure-menu.pure-menu-white a:hover {
+    color: #7E9307;
+}
+.pure-menu.pure-menu-white .pure-menu-selected {
+    box-shadow: inset 0px -4px 0px 0px #7E9307;
 }

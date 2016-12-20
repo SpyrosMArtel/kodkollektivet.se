@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-13 22:30+0100\n"
+"POT-Creation-Date: 2016-12-19 21:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: kodkollektivet/views.py:25 templates/menu.html:7
+#: kodkollektivet/views.py:26 templates/menu.html:7
 msgid "Board"
 msgstr "Styrelsen"
 
-#: kodkollektivet/views.py:35 templates/menu.html:6
+#: kodkollektivet/views.py:36 templates/menu.html:6
 msgid "Events"
 msgstr ""
 
-#: kodkollektivet/views.py:51 templates/menu.html:8
+#: kodkollektivet/views.py:52 templates/menu.html:8
 msgid "Projects"
 msgstr "Projekt"
 
@@ -38,31 +38,38 @@ msgstr "Engelska"
 msgid "Swedish"
 msgstr "Svenska"
 
-#: templates/base.html:39
+#: templates/base.html:43
+msgid "Become member!"
+msgstr "Bli medlem!"
+
+#: templates/base.html:50
 msgid "Vad är Kodkollektivet"
 msgstr ""
 
-#: templates/base.html:41
+#: templates/base.html:52
 msgid ""
-"Kodkollektivet består av en grupp studenter med ett brinnande intresse, "
-"främst inom programmering, nätverk och andra IT-relaterade ämnen. Vi "
-"startade under sommaren 2015 med ett hav av idéer som vi sedan dess har "
-"provat på, finslipat men framför allt lärt oss en hel del av gällande både "
-"samarbete, planering och fokus. Med detta i bagaget startar Kodkollektivet "
-"nu som studentförening och skiftar fokus en aning från projektarbeten och "
-"kodträffar till en mer social platform inriktad på studenter (med ingen till "
-"full kompetens inom sitt område) likaväl som företag med intresse av att "
-"komma i tidig kontakt med framtida arbetstagare. Detta gör vi med hjälp av "
-"en mötesplats där studenter får komma i kontakt med båda varandra och "
-"näringsliv genom diverse aktiviteter såsom tema-kvällar, hackathons, "
-"workshops, studiebesök och kortare gästföreläsningar från företag i regionen."
+"\n"
+"                Kodkollektivet består av en grupp studenter med ett "
+"brinnande intresse, främst inom programmering, nätverk och andra IT-"
+"relaterade ämnen. Vi startade under sommaren 2015 med ett hav av idéer som "
+"vi sedan dess har provat på, finslipat men framför allt lärt oss en hel del "
+"av gällande både samarbete, planering och fokus. Med detta i bagaget startar "
+"Kodkollektivet nu som studentförening och skiftar fokus en aning från "
+"projektarbeten och kodträffar till en mer social platform inriktad på "
+"studenter (med ingen till full kompetens inom sitt område) likaväl som "
+"företag med intresse av att komma i tidig kontakt med framtida arbetstagare. "
+"Detta gör vi med hjälp av en mötesplats där studenter får komma i kontakt "
+"med båda varandra och näringsliv genom diverse aktiviteter såsom tema-"
+"kvällar, hackathons, workshops, studiebesök och kortare gästföreläsningar "
+"från företag i regionen.\n"
+"                "
 msgstr ""
 
-#: templates/base.html:44
+#: templates/base.html:58
 msgid "Student, har du vad som krävs"
 msgstr ""
 
-#: templates/base.html:46
+#: templates/base.html:59
 msgid ""
 "Absolut! För att ta del av Kodkollektivet krävs inga som helst tidigare "
 "erfarenheter eller särskilda talanger. Vi välkomnar alla som vill lära sig "
@@ -72,11 +79,11 @@ msgid ""
 "du vill lägga ner på de aktiviteter och träffar vi erbjuder."
 msgstr ""
 
-#: templates/base.html:49
+#: templates/base.html:62
 msgid "Företagare, kom och träffa framtiden"
 msgstr ""
 
-#: templates/base.html:51
+#: templates/base.html:63
 msgid ""
 "Dagens studenter är dem som kommer att driva fram nya ideer och tanker i "
 "dagens företag. Genom Kodkollektivet finns möjligheten att på ett "
@@ -84,10 +91,6 @@ msgid ""
 "ni kommer med ideer på events, föreläsningar eller studiebesök! Vill ni vara "
 "med och sponsra Kodkollektivet och få din logo på hemsidan?"
 msgstr ""
-
-#: templates/base.html:59
-msgid "Upcoming event"
-msgstr "Kommande event"
 
 #: templates/board.html:10
 msgid "President"
@@ -119,10 +122,6 @@ msgstr "Styrelseledamot"
 #: templates/board.html:105
 msgid "Bilderna är tagna av"
 msgstr "Pictures are taken by"
-
-#: templates/menu.html:5
-msgid "Home"
-msgstr "Hem"
 
 #: templates/menu.html:11
 msgid "Statutes"
@@ -209,3 +208,9 @@ msgstr ""
 #: templates/registration/registration_complete.html:5
 msgid "You are now registered. Activation email sent."
 msgstr ""
+
+#~ msgid "Upcoming event"
+#~ msgstr "Kommande event"
+
+#~ msgid "Home"
+#~ msgstr "Hem"

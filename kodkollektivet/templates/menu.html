@@ -1,6 +1,6 @@
 {% load nav_active %}
 {% load i18n %}
-<nav class="pure-menu pure-menu-horizontal pure-menu-fixed pure-menu-bluebg">
+<nav class="pure-menu pure-menu-horizontal pure-menu-fixed pure-menu-white">
   <a class="pure-menu-heading" href="{% url "home" %}">KodKollektivet</a>
   <ul class="pure-menu-list">
     <li class="pure-menu-item {% navactive request "eventslistview" %}"><a href="{% url "kodkollektivet:eventslistview" %}">{% trans "Events" %}</a></li>
